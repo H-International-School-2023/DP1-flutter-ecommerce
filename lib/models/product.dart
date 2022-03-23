@@ -6,5 +6,5 @@ class Product {
   String summary;
 
   Product(this.name, this.description, this.price)
-      : summary = description.substring(0, 100);
+      : summary = description.substring(0, 10);
 }

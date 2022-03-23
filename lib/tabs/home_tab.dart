@@ -22,6 +22,16 @@ class _HomeTabState extends State<HomeTab> {
 
     Product product2 = Product('Cup', 'The best cup in welcome center', 9.98);
 
+    products.add(product1);
+    products.add(product2);
+
+    List<Text> texts = <Text>[];
+    for (int i = 0; i < products.length; i += 1) {
+      if (products[i].name.toLowerCase().contains(searchText.toLowerCase())) {
+        texts.add(Text(products[i].name));
+      }
+    }
+
     return CupertinoPageScaffold(
         navigationBar: const CupertinoNavigationBar(middle: Text('Shop')),
         child: SafeArea(
@@ -33,9 +43,11 @@ class _HomeTabState extends State<HomeTab> {
                     searchText = value;
                   }),
                 ),
-                Center(
-                  child: Text(searchText),
-                )
+                Expanded(
+                  child: ListView(
+                    children: texts,
+                  ),
+                ),
               ],
             )));
   }
