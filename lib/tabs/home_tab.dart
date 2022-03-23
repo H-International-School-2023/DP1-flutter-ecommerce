@@ -27,7 +27,10 @@ class _HomeTabState extends State<HomeTab> {
 
     List<Text> texts = <Text>[];
     for (int i = 0; i < products.length; i += 1) {
-      if (products[i].name.toLowerCase().contains(searchText.toLowerCase())) {
+      String lowerCaseProductName = products[i].name.toLowerCase();
+      String lowerCaseSearchText = searchText.toLowerCase();
+      bool isContained = lowerCaseProductName.contains(lowerCaseSearchText);
+      if (isContained) {
         texts.add(Text(products[i].name));
       }
     }
